@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edge - Manajemen Perangkat</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-wave-square"></i>
+                <span>Edge</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>Beranda</span>
+                </a>
+                <a href="monitoring.html" class="nav-link">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Monitoring</span>
+                </a>
+                <a href="history.html" class="nav-link">
+                    <i class="fas fa-clock"></i>
+                    <span>History</span>
+                </a>
+                <a href="device.html" class="nav-link active">
+                    <i class="fas fa-desktop"></i>
+                    <span>Device</span>
+                </a>
+                <a href="#" class="nav-link">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Map</span>
+                </a>
+                <a href="#" class="nav-link">
+                    <i class="fas fa-user"></i>
+                    <span>Account</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content device-page">
+        <section class="device-section">
+            <h1 class="section-title">Manajemen Perangkat</h1>
+
+            <div class="device-card device-status-card empty">
+                <div class="device-card-header">
+                    <div class="device-card-icon">
+                        <i class="fas fa-plug"></i>
+                    </div>
+                    <div>
+                        <p class="device-card-title">Status Koneksi Device</p>
+                        <p class="device-card-subtitle">Pantau koneksi perangkat Edge Anda secara real-time.</p>
+                    </div>
+                </div>
+                <div class="device-empty-state">
+                    <i class="fas fa-unlink"></i>
+                    <p>Belum ada device yang terhubung</p>
+                    <small>Hubungkan perangkat Edge untuk melihat status koneksinya di sini.</small>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
+
+

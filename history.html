@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edge - Riwayat Peristiwa</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-wave-square"></i>
+                <span>Edge</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>Beranda</span>
+                </a>
+                <a href="monitoring.html" class="nav-link">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Monitoring</span>
+                </a>
+                <a href="history.html" class="nav-link active">
+                    <i class="fas fa-clock"></i>
+                    <span>History</span>
+                </a>
+                <a href="device.html" class="nav-link">
+                    <i class="fas fa-desktop"></i>
+                    <span>Device</span>
+                </a>
+                <a href="#" class="nav-link">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Map</span>
+                </a>
+                <a href="#" class="nav-link">
+                    <i class="fas fa-user"></i>
+                    <span>Account</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content history-page">
+        <section class="history-section">
+            <h1 class="section-title">Riwayat Peristiwa & Grafik</h1>
+
+            <div class="history-card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-chart-area"></i>
+                    </div>
+                    <div>
+                        <p class="card-title-sm">Replay Grafik History Sensor</p>
+                        <p class="card-subtitle">Tampilkan data pergeseran historis dari kedua sensor. Data mungkin perlu beberapa saat untuk terkumpul setelah halaman monitoring dibuka.</p>
+                    </div>
+                </div>
+                <button class="history-btn">
+                    <i class="fas fa-cloud-download-alt"></i>
+                    <span>Muat Grafik History (100 Data Terakhir)</span>
+                </button>
+                <div class="history-placeholder">
+                    <i class="fas fa-chart-line"></i>
+                    <p>Grafik akan muncul setelah data history tersedia.</p>
+                </div>
+            </div>
+
+            <div class="history-card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-list"></i>
+                    </div>
+                    <div>
+                        <p class="card-title-sm">Log Peristiwa (20 Terakhir)</p>
+                        <p class="card-subtitle">Menampilkan log real-time dari perubahan status penting (misal: "GEMPA KUAT!").</p>
+                    </div>
+                </div>
+                <div class="log-container empty">
+                    <div class="log-empty">
+                        <i class="fas fa-clipboard-list"></i>
+                        <p>Belum ada data log yang tercatat.</p>
+                        <small>Log akan tampil otomatis ketika perangkat menghasilkan peristiwa.</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
+
