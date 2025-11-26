@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="account.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Account</title>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-wave-square"></i>
+                <span>Edge</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>Beranda</span>
+                </a>
+                <a href="monitoring.html" class="nav-link">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Monitoring</span>
+                </a>
+                <a href="history.html" class="nav-link">
+                    <i class="fas fa-clock"></i>
+                    <span>History</span>
+                </a>
+                <a href="device.html" class="nav-link">
+                    <i class="fas fa-desktop"></i>
+                    <span>Device</span>
+                </a>
+                <a href="maps.html" class="nav-link">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Map</span>
+                </a>
+                <a href="account.html" class="nav-link active">
+                    <i class="fas fa-user"></i>
+                    <span>Account</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="account-page">
+            <div class="account-header">
+                <h1>Account Settings</h1>
+                <p>Manage your profile and preferences.</p>
+            </div>
+
+            <div class="account-content">
+                <div class="account-card profile-photo-card">
+                    <h3>Profile Photo</h3>
+                    <div class="profile-photo-wrapper">
+                        <img src="https://via.placeholder.com/150" alt="Profile Photo" class="profile-photo">
+                        <button class="btn-secondary">Change Photo</button>
+                    </div>
+                </div>
+
+                <div class="account-card">
+                    <h3>Account Information</h3>
+                    <div class="info-group">
+                        <label>Name</label>
+                        <p>Current User</p>
+                    </div>
+                    <div class="info-group">
+                        <label>Email Address</label>
+                        <p>user@example.com</p>
+                    </div>
+                    <button class="btn-primary">Edit Profile</button>
+                    <button class="btn-secondary">Change Password</button>
+                </div>
+
+                <div class="account-card">
+                    <h3>Notification Settings</h3>
+                    <div class="notification-setting">
+                        <p>Email Notifications</p>
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div class="notification-setting">
+                        <p>Push Notifications</p>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="account-card">
+                    <h3>Session Management</h3>
+                    <button class="btn-primary logout-btn">Logout</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>

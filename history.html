@@ -31,11 +31,11 @@
                     <i class="fas fa-desktop"></i>
                     <span>Device</span>
                 </a>
-                <a href="#" class="nav-link">
+                <a href="maps.html" class="nav-link">
                     <i class="fas fa-map-marker-alt"></i>
                     <span>Map</span>
                 </a>
-                <a href="#" class="nav-link">
+                <a href="account.html" class="nav-link">
                     <i class="fas fa-user"></i>
                     <span>Account</span>
                 </a>
@@ -45,48 +45,280 @@
 
     <main class="main-content history-page">
         <section class="history-section">
-            <h1 class="section-title">Riwayat Peristiwa & Grafik</h1>
+            <h1 class="section-title">Detection History</h1>
+            <p class="section-subtitle">Review past events captured by your Edge AI devices.</p>
 
-            <div class="history-card">
-                <div class="card-header">
-                    <div class="card-icon">
-                        <i class="fas fa-chart-area"></i>
-                    </div>
-                    <div>
-                        <p class="card-title-sm">Replay Grafik History Sensor</p>
-                        <p class="card-subtitle">Tampilkan data pergeseran historis dari kedua sensor. Data mungkin perlu beberapa saat untuk terkumpul setelah halaman monitoring dibuka.</p>
-                    </div>
+            <div class="history-filters">
+                <div class="filter-group">
+                    <label for="date-filter"><i class="fas fa-calendar-alt"></i> Date Range</label>
+                    <input type="date" id="date-filter" class="filter-input">
                 </div>
-                <button class="history-btn">
-                    <i class="fas fa-cloud-download-alt"></i>
-                    <span>Muat Grafik History (100 Data Terakhir)</span>
-                </button>
-                <div class="history-placeholder">
-                    <i class="fas fa-chart-line"></i>
-                    <p>Grafik akan muncul setelah data history tersedia.</p>
+                <div class="filter-group">
+                    <label for="type-filter"><i class="fas fa-tag"></i> Detection Type</label>
+                    <select id="type-filter" class="filter-input">
+                        <option value="all">All Types</option>
+                        <option value="human">Human</option>
+                        <option value="chainsaw">Chainsaw</option>
+                        <option value="forest">Forest Sound</option>
+                    </select>
                 </div>
+                <div class="filter-group">
+                    <label for="device-filter"><i class="fas fa-desktop"></i> Device</label>
+                    <select id="device-filter" class="filter-input">
+                        <option value="all">All Devices</option>
+                        <option value="device-1">Device 001</option>
+                        <option value="device-2">Device 002</option>
+                    </select>
+                </div>
+                <button class="filter-btn"><i class="fas fa-filter"></i> Apply Filters</button>
             </div>
 
-            <div class="history-card">
-                <div class="card-header">
-                    <div class="card-icon">
-                        <i class="fas fa-list"></i>
+            <div class="history-grid">
+                <!-- Example Card 1: Human & Forest Sound -->
+                <div class="history-card">
+                    <div class="card-image">
+                        <img src="https://via.placeholder.com/400x300.png?text=Event+Capture" alt="Detection Image">
                     </div>
-                    <div>
-                        <p class="card-title-sm">Log Peristiwa (20 Terakhir)</p>
-                        <p class="card-subtitle">Menampilkan log real-time dari perubahan status penting (misal: "GEMPA KUAT!").</p>
+                    <div class="card-content">
+                        <div class="card-detections">
+                            <div class="detection-item">
+                                <i class="fas fa-eye detection-icon visual"></i>
+                                <div class="detection-info">
+                                    <span class="detection-label">Visual Detection</span>
+                                    <span class="detection-value human">Human Detected</span>
+                                </div>
+                            </div>
+                            <div class="detection-item">
+                                <i class="fas fa-volume-up detection-icon audio"></i>
+                                <div class="detection-info">
+                                    <span class="detection-label">Audio Detection</span>
+                                    <span class="detection-value">Forest Sound</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-meta">
+                            <p><i class="fas fa-clock"></i> 2025-11-17 10:30:15</p>
+                            <p><i class="fas fa-desktop"></i> Device 001</p>
+                        </div>
                     </div>
                 </div>
-                <div class="log-container empty">
-                    <div class="log-empty">
-                        <i class="fas fa-clipboard-list"></i>
-                        <p>Belum ada data log yang tercatat.</p>
-                        <small>Log akan tampil otomatis ketika perangkat menghasilkan peristiwa.</small>
+
+                <!-- Example Card 2: No Human & Chainsaw -->
+                <div class="history-card">
+                    <div class="card-image">
+                        <img src="https://via.placeholder.com/400x300.png?text=Event+Capture" alt="Detection Image">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-detections">
+                            <div class="detection-item">
+                                <i class="fas fa-eye-slash detection-icon visual"></i>
+                                <div class="detection-info">
+                                    <span class="detection-label">Visual Detection</span>
+                                    <span class="detection-value">No Human</span>
+                                </div>
+                            </div>
+                            <div class="detection-item">
+                                <i class="fas fa-volume-up detection-icon audio"></i>
+                                <div class="detection-info">
+                                    <span class="detection-label">Audio Detection</span>
+                                    <span class="detection-value chainsaw">Chainsaw Detected</span>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="card-meta">
+                            <p><i class="fas fa-clock"></i> 2025-11-17 09:15:45</p>
+                            <p><i class="fas fa-desktop"></i> Device 002</p>
+                        </div>
                     </div>
                 </div>
+
+                 <!-- Example Card 3: No Human & Forest -->
+                <div class="history-card">
+                    <div class="card-image">
+                        <img src="https://via.placeholder.com/400x300.png?text=Event+Capture" alt="Detection Image">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-detections">
+                            <div class="detection-item">
+                                <i class="fas fa-eye-slash detection-icon visual"></i>
+                                <div class="detection-info">
+                                    <span class="detection-label">Visual Detection</span>
+                                    <span class="detection-value">No Human</span>
+                                </div>
+                            </div>
+                            <div class="detection-item">
+                                <i class="fas fa-volume-up detection-icon audio"></i>
+                                <div class="detection-info">
+                                    <span class="detection-label">Audio Detection</span>
+                                    <span class="detection-value">Forest Sound</span>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="card-meta">
+                            <p><i class="fas fa-clock"></i> 2025-11-17 08:05:20</p>
+                            <p><i class="fas fa-desktop"></i> Device 001</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <div class="pagination">
+                <a href="#" class="page-link active">1</a>
+                <a href="#" class="page-link">2</a>
+                <a href="#" class="page-link">3</a>
+                <a href="#" class="page-link">Next &raquo;</a>
             </div>
         </section>
     </main>
+
+    <style>
+        .history-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            background-color: #fff;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+        }
+        .filter-group label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #555;
+            font-size: 0.9rem;
+        }
+        .filter-group label i {
+            margin-right: 0.5rem;
+            color: #007bff;
+        }
+        .filter-input {
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+            min-width: 200px;
+        }
+        .filter-btn {
+            align-self: flex-end;
+            padding: 0.8rem 1.5rem;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+        .filter-btn:hover {
+            background-color: #0056b3;
+        }
+        .history-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 2rem;
+        }
+        .history-card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .history-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        .card-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .card-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .card-detections {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .detection-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .detection-icon {
+            font-size: 1.8rem;
+            width: 30px;
+            text-align: center;
+        }
+        .detection-icon.visual { color: #007bff; }
+        .detection-icon.audio { color: #fd7e14; }
+
+        .detection-info {
+            display: flex;
+            flex-direction: column;
+        }
+        .detection-label {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-bottom: 0.1rem;
+        }
+        .detection-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #343a40;
+        }
+        .detection-value.human, .detection-value.chainsaw {
+            color: #dc3545; /* Red for critical alerts */
+        }
+        .card-meta {
+            margin-top: auto;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+            font-size: 0.9rem;
+            color: #666;
+            display: flex;
+            justify-content: space-between;
+        }
+        .card-meta p {
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+            gap: 0.5rem;
+        }
+        .page-link {
+            padding: 0.8rem 1.2rem;
+            text-decoration: none;
+            color: #007bff;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .page-link:hover {
+            background-color: #e9ecef;
+            color: #0056b3;
+        }
+        .page-link.active {
+            background-color: #007bff;
+            color: white;
+            border-color: #007bff;
+        }
+    </style>
 </body>
 </html>
-

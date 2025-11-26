@@ -31,11 +31,11 @@
                     <i class="fas fa-desktop"></i>
                     <span>Device</span>
                 </a>
-                <a href="#" class="nav-link">
+                <a href="maps.html" class="nav-link">
                     <i class="fas fa-map-marker-alt"></i>
                     <span>Map</span>
                 </a>
-                <a href="#" class="nav-link">
+                <a href="account.html" class="nav-link">
                     <i class="fas fa-user"></i>
                     <span>Account</span>
                 </a>
@@ -45,22 +45,152 @@
 
     <main class="main-content monitoring-page">
         <section class="monitoring-section">
-            <h1 class="section-title">Monitoring Real-Time</h1>
+            <h1 class="section-title">Real-Time Monitoring</h1>
             <p class="section-subtitle">
-                Pantau kondisi perangkat Edge yang tersebar di lapangan. Data diperbarui secara berkala dan menampilkan status getaran terkini.
+                Live feed from your Edge AI device. See and hear what's happening on the ground.
             </p>
 
-            <div class="devices-grid empty-state">
-                <div class="device-card">
-                    <div class="empty-state-icon">
-                        <i class="fas fa-satellite-dish"></i>
+            <div class="monitoring-grid">
+                <div class="monitoring-card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-video"></i> Camera Feed</h2>
                     </div>
-                    <h3>Tidak ada perangkat yang dipantau</h3>
-                    <p>Hubungkan perangkat Edge Anda terlebih dahulu untuk melihat data monitoring secara real-time.</p>
+                    <div class="camera-view">
+                        <img src="https://via.placeholder.com/640x480.png?text=No+Signal" alt="Camera Feed" id="camera-image">
+                    </div>
+                </div>
+                <div class="monitoring-card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-user"></i> Detection Status</h2>
+                    </div>
+                    <div class="detection-result" id="human-detection">
+                        <span>Status: <span id="human-status">Awaiting detection...</span></span>
+                        <hr>
+                        <span>Type: Human or Non-Human</span>
+                    </div>
+                </div>
+                <div class="monitoring-card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-volume-up"></i> Sound Detection</h2>
+                    </div>
+                    <div class="sound-status" id="sound-detection">
+                        <span>Chainsaw: <span id="chainsaw-status">Neutral</span></span>
+                        <hr>
+                        <span>Forest: <span id="forest-status">Neutral</span></span>
+                    </div>
+                </div>
+                <div class="monitoring-card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-clipboard-list"></i> Event Log</h2>
+                    </div>
+                    <div class="log-box">
+                        <ul id="event-log">
+                            <li>No events yet.</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
+
+    <style>
+        .monitoring-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .monitoring-card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+        .card-header h2, .card-header h3 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: #333;
+        }
+        .card-header i {
+            margin-right: 0.8rem;
+            color: #007bff;
+        }
+        .camera-view {
+            position: relative;
+            width: 100%;
+            padding-top: 75%; /* 4:3 Aspect Ratio */
+            background-color: #000;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+        .camera-view img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .detection-result {
+            text-align: center;
+            font-size: 1.2rem;
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        .detection-result.detected {
+            background-color: #d4edda; /* Green for detected */
+            color: #155724;
+        }
+        .detection-result.not-detected {
+            background-color: #f8d7da; /* Red for not detected */
+            color: #721c24;
+        }
+        .detection-result i {
+            margin-right: 0.5rem;
+        }
+        .sound-status {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            font-size: 1.3rem;
+            padding: 1rem 0;
+        }
+        .sound-status hr {
+            border: none;
+            border-top: 1px solid #eee;
+            margin: 0.5rem 0;
+        }
+
+        .log-box {
+        }
+        #event-log {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            height: 150px;
+            overflow-y: auto;
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #f0f2f5;
+            border: 1px solid #ddd;
+            padding: 0.5rem;
+            border-radius: 5px;
+        }
+        #event-log li {
+            padding: 0.3rem 0.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        #event-log li:last-child {
+            border-bottom: none;
+        }
+    </style>
 </body>
 </html>
-

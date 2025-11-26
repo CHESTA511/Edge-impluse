@@ -1,0 +1,154 @@
+/* General Map Page Layout */
+.map-container {
+    display: flex;
+    gap: 2rem;
+    height: calc(100vh - 120px); /* Full height minus navbar */
+}
+
+.sidebar {
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    background-color: #f1f5f9;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+#map {
+    flex-grow: 1;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Marker Controls */
+.marker-controls {
+    padding: 1.5rem;
+    background-color: #e2e8f0;
+}
+
+.marker-controls h3 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #1e293b;
+    margin-bottom: 1rem;
+}
+
+#marker-name {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+#add-marker-btn {
+    width: 100%;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#add-marker-btn:hover {
+    background-color: #2563eb;
+}
+
+/* Device List */
+#device-list-container {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 1.5rem;
+}
+
+#device-list-container h3 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #1e293b;
+    margin-bottom: 1rem;
+}
+
+#device-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#device-list li {
+    padding: 1rem;
+    cursor: pointer;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    transition: background-color 0.3s ease;
+    font-weight: 500;
+}
+
+#device-list li:hover {
+    background-color: #e2e8f0;
+}
+
+#device-list li.selected {
+    background-color: #3b82f6;
+    color: white;
+}
+
+/* Custom Popup Styles */
+.custom-popup {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.custom-popup h4 {
+    margin: 0 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #ddd;
+    font-size: 18px;
+    color: #222;
+}
+
+.custom-popup .popup-info {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.custom-popup .popup-info li {
+    margin-bottom: 6px;
+    color: #444;
+    font-size: 15px;
+}
+
+.custom-popup .popup-info strong {
+    color: #222;
+}
+
+.custom-popup .status-hidup {
+    color: #28a745;
+    font-weight: bold;
+}
+
+.custom-popup .status-mati {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .map-container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        margin-bottom: 2rem;
+    }
+}

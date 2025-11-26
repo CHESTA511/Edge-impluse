@@ -88,9 +88,8 @@ body {
 
 /* Main Content */
 .main-content {
-    max-width: 1200px;
     margin: 0 auto;
-    padding: 3rem 2rem;
+    padding: 2rem 1rem;
 }
 
 /* Welcome Section */
@@ -259,7 +258,6 @@ body {
     }
 
     .main-content {
-        padding: 2rem 1rem;
     }
 }
 

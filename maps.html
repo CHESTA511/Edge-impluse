@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edge - Manajemen Perangkat</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="styleMaps.css" />
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>map</title>
 </head>
 <body>
+    <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
@@ -27,11 +29,11 @@
                     <i class="fas fa-clock"></i>
                     <span>History</span>
                 </a>
-                <a href="device.html" class="nav-link active">
+                <a href="device.html" class="nav-link">
                     <i class="fas fa-desktop"></i>
                     <span>Device</span>
                 </a>
-                <a href="maps.html" class="nav-link">
+                <a href="maps.html" class="nav-link active">
                     <i class="fas fa-map-marker-alt"></i>
                     <span>Map</span>
                 </a>
@@ -43,29 +45,25 @@
         </div>
     </nav>
 
-    <main class="main-content device-page">
-        <section class="device-section">
-            <h1 class="section-title">Manajemen Perangkat</h1>
-
-            <div class="device-card device-status-card empty">
-                <div class="device-card-header">
-                    <div class="device-card-icon">
-                        <i class="fas fa-plug"></i>
-                    </div>
-                    <div>
-                        <p class="device-card-title">Status Koneksi Device</p>
-                        <p class="device-card-subtitle">Pantau koneksi perangkat Edge Anda secara real-time.</p>
-                    </div>
+    <main class="main-content">
+        <div class="map-container">
+            <div class="sidebar">
+                <div class="marker-controls">
+                    <h3>Device Controls</h3>
+                    <input type="text" id="marker-name" placeholder="Enter marker name">
+                    <button id="add-marker-btn">Add Marker</button>
                 </div>
-                <div class="device-empty-state">
-                    <i class="fas fa-unlink"></i>
-                    <p>Belum ada device yang terhubung</p>
-                    <small>Hubungkan perangkat Edge untuk melihat status koneksinya di sini.</small>
+                <div id="device-list-container">
+                    <h3>Device List</h3>
+                    <ul id="device-list"></ul>
                 </div>
             </div>
-        </section>
+            <div id="map"></div>
+        </div>
     </main>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="maps.js"></script>
+
 </body>
 </html>
-
-
