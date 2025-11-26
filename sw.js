@@ -1,5 +1,5 @@
 // Service Worker for VoxSilva Forest Surveillance App
-const CACHE_NAME = 'voxsilva-forest-surveillance-v5-icons-improved';
+const CACHE_NAME = 'voxsilva-forest-surveillance-v6-icons-centered';
 const urlsToCache = [
   '/',
   '/index.html',

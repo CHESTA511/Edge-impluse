@@ -4,7 +4,7 @@
 
 const CONFIG = {
     // Google Gemini API Configuration
-    GEMINI_API_KEY: 'AIzaSyAir6drpc83KDs9F0nTs9F2jAEZoJU-pGI', // API Key untuk development
+    GEMINI_API_KEY: 'AIzaSyATSW1pc3AvSSSIpDRXE-7LFnA7zgV9bXo', // API Key untuk development
     GEMINI_API_URL: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent',
     
     // System prompt untuk AI Assistant

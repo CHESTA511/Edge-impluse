@@ -279,10 +279,10 @@
                 </div>
             </div>
              <div class="pagination">
-                <a href="#" class="page-link active">1</a>
-                <a href="#" class="page-link">2</a>
-                <a href="#" class="page-link">3</a>
-                <a href="#" class="page-link">Next &raquo;</a>
+                <a href="#" class="page-link active" data-page="1">1</a>
+                <a href="#" class="page-link" data-page="2">2</a>
+                <a href="#" class="page-link" data-page="3">3</a>
+                <a href="#" class="page-link" id="next-link">Next &raquo;</a>
             </div>
         </section>
     </main>
@@ -306,6 +306,64 @@
                     }
                 });
             }
+
+            // Pagination functionality
+            const historyGrid = document.querySelector('.history-grid');
+            const pageLinks = document.querySelectorAll('.page-link');
+            const cards = document.querySelectorAll('.history-card');
+            const itemsPerPage = 2; // Number of cards per page
+            let currentPage = 1;
+            const totalPages = Math.ceil(cards.length / itemsPerPage);
+
+            // Function to show cards for a specific page
+            function showPage(page) {
+                const startIndex = (page - 1) * itemsPerPage;
+                const endIndex = startIndex + itemsPerPage;
+
+                cards.forEach((card, index) => {
+                    if (index >= startIndex && index < endIndex) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                // Update active state on number links
+                pageLinks.forEach((link) => {
+                    link.classList.remove('active');
+                    const pageNum = link.getAttribute('data-page');
+                    if (pageNum && parseInt(pageNum) === page) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            // Initialize: show first page
+            showPage(1);
+
+            // Handle pagination clicks
+            pageLinks.forEach((link) => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const linkText = link.textContent.trim();
+                    const dataPage = link.getAttribute('data-page');
+                    
+                    if (linkText === 'Next »') {
+                        if (currentPage < totalPages) {
+                            currentPage++;
+                            showPage(currentPage);
+                        }
+                    } else if (dataPage) {
+                        // Number link
+                        const pageNum = parseInt(dataPage);
+                        if (pageNum >= 1 && pageNum <= totalPages) {
+                            currentPage = pageNum;
+                            showPage(currentPage);
+                        }
+                    }
+                });
+            });
         });
     </script>
 </body>

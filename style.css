@@ -404,11 +404,17 @@ body {
         padding: 1rem;
     }
 
+    .detection-icon-wrapper {
+        width: 48px;
+        height: 48px;
+    }
+    
     .detection-icon {
         font-size: 1.5rem;
         width: 48px;
         height: 48px;
         border-radius: 10px;
+        line-height: 48px;
     }
     
     .detection-icon.visual,
@@ -601,11 +607,17 @@ body {
         padding: 1rem;
     }
 
+    .detection-icon-wrapper {
+        width: 56px;
+        height: 56px;
+    }
+    
     .detection-icon {
         width: 56px;
         height: 56px;
         font-size: 1.75rem;
         border-radius: 12px;
+        line-height: 56px;
     }
     
     .detection-icon.visual,
@@ -1149,13 +1161,14 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 64px;
+    height: 64px;
 }
 
 .detection-icon {
     font-size: 2rem;
     width: 64px;
     height: 64px;
-    text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1164,6 +1177,10 @@ body {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
+    padding: 0;
+    margin: 0;
+    line-height: 64px;
+    text-align: center;
 }
 
 .detection-icon::before {
@@ -1178,10 +1195,16 @@ body {
     pointer-events: none;
 }
 
-.detection-icon i {
+.detection-icon i.fas,
+.detection-icon i.far,
+.detection-icon i.fab {
+    display: inline-block;
+    line-height: 1;
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
     position: relative;
-    z-index: 1;
-    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+    z-index: 2;
 }
 
 .detection-item:hover .detection-icon {
