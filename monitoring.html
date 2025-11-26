@@ -3,19 +3,22 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Edge - Monitoring Real-Time</title>
+        <title>VoxSilva - Real-Time Monitoring</title>
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <link rel="manifest" href="manifest.json">
-        <meta name="theme-color" content="#3b82f6">
+        <meta name="theme-color" content="#22c55e">
     </head>
 <body>
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">
-                <i class="fas fa-wave-square"></i>
-                <span>Edge</span>
-            </div>
+                <div class="logo">
+                    <i class="fas fa-tree"></i>
+                    <span>VoxSilva</span>
+                </div>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
             <div class="nav-links">
                 <a href="index.html" class="nav-link">
                     <i class="fas fa-home"></i>
@@ -37,6 +40,10 @@
                     <i class="fas fa-map-marker-alt"></i>
                     <span>Map</span>
                 </a>
+                <a href="chatbot.html" class="nav-link">
+                    <i class="fas fa-robot"></i>
+                    <span>AI Assistant</span>
+                </a>
                 <a href="account.html" class="nav-link">
                     <i class="fas fa-user"></i>
                     <span>Account</span>
@@ -49,13 +56,13 @@
         <section class="monitoring-section">
             <h1 class="section-title">Real-Time Monitoring</h1>
             <p class="section-subtitle">
-                Live feed from your Edge AI device. See and hear what's happening on the ground.
+                Live feed from your VoxSilva device. See and hear what's happening on the ground.
             </p>
 
             <div class="monitoring-grid">
                 <div class="monitoring-card">
                     <div class="card-header">
-                        <h2><i class="fas fa-video"></i> Camera Feed</h2>
+                        <h2><i class="fas fa-video"></i> Camera Feed (ESP32 Cam)</h2>
                     </div>
                     <div class="camera-view">
                         <img src="https://via.placeholder.com/640x480.png?text=No+Signal" alt="Camera Feed" id="camera-image">
@@ -63,7 +70,7 @@
                 </div>
                 <div class="monitoring-card">
                     <div class="card-header">
-                        <h2><i class="fas fa-user"></i> Detection Status</h2>
+                        <h2><i class="fas fa-user"></i> Visual Detection</h2>
                     </div>
                     <div class="detection-result" id="human-detection">
                         <span>Status: <span id="human-status">Awaiting detection...</span></span>
@@ -83,6 +90,31 @@
                 </div>
                 <div class="monitoring-card">
                     <div class="card-header">
+                        <h2><i class="fas fa-compass"></i> MPU6050 Sensor (Movement)</h2>
+                    </div>
+                    <div class="mpu6050-data" id="mpu6050-data">
+                        <div class="axis-data">
+                            <div class="axis-item">
+                                <span class="axis-label">X Axis:</span>
+                                <span class="axis-value" id="mpu-x">0.00 g</span>
+                            </div>
+                            <div class="axis-item">
+                                <span class="axis-label">Y Axis:</span>
+                                <span class="axis-value" id="mpu-y">0.00 g</span>
+                            </div>
+                            <div class="axis-item">
+                                <span class="axis-label">Z Axis:</span>
+                                <span class="axis-value" id="mpu-z">0.00 g</span>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="movement-status">
+                            <span>Movement Status: <span id="movement-status">Stable</span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="monitoring-card">
+                    <div class="card-header">
                         <h2><i class="fas fa-clipboard-list"></i> Event Log</h2>
                     </div>
                     <div class="log-box">
@@ -94,109 +126,27 @@
             </div>
         </section>
     </main>
-<<<<<<< HEAD
-
-    <style>
-        .monitoring-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        .monitoring-card {
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            padding: 1.5rem;
-        }
-        .card-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 1rem;
-        }
-        .card-header h2, .card-header h3 {
-            margin: 0;
-            font-size: 1.5rem;
-            color: #333;
-        }
-        .card-header i {
-            margin-right: 0.8rem;
-            color: #007bff;
-        }
-        .camera-view {
-            position: relative;
-            width: 100%;
-            padding-top: 75%; /* 4:3 Aspect Ratio */
-            background-color: #000;
-            border-radius: 8px;
-            overflow: hidden;
-            margin-bottom: 1rem;
-        }
-        .camera-view img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .detection-result {
-            text-align: center;
-            font-size: 1.2rem;
-            padding-bottom: 1rem;
-            margin-bottom: 1rem;
-            border-bottom: 1px solid #eee;
-        }
-        .detection-result.detected {
-            background-color: #d4edda; /* Green for detected */
-            color: #155724;
-        }
-        .detection-result.not-detected {
-            background-color: #f8d7da; /* Red for not detected */
-            color: #721c24;
-        }
-        .detection-result i {
-            margin-right: 0.5rem;
-        }
-        .sound-status {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            font-size: 1.3rem;
-            padding: 1rem 0;
-        }
-        .sound-status hr {
-            border: none;
-            border-top: 1px solid #eee;
-            margin: 0.5rem 0;
-        }
-
-        .log-box {
-        }
-        #event-log {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            height: 150px;
-            overflow-y: auto;
-            font-family: 'Courier New', Courier, monospace;
-            background-color: #f0f2f5;
-            border: 1px solid #ddd;
-            padding: 0.5rem;
-            border-radius: 5px;
-        }
-        #event-log li {
-            padding: 0.3rem 0.5rem;
-            border-bottom: 1px solid #eee;
-        }
-        #event-log li:last-child {
-            border-bottom: none;
-        }
-    </style>
-=======
     <script src="app.js"></script>
->>>>>>> 4b86f3e055f880d061692c0125e1cd9e92b46bc4
+    <script>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (menuToggle) {
+                menuToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                    const icon = menuToggle.querySelector('i');
+                    if (navLinks.classList.contains('active')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>

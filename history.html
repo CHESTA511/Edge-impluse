@@ -3,19 +3,22 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Edge - Riwayat Peristiwa</title>
+        <title>VoxSilva - Detection History</title>
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <link rel="manifest" href="manifest.json">
-        <meta name="theme-color" content="#3b82f6">
+        <meta name="theme-color" content="#22c55e">
     </head>
 <body>
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
-                <i class="fas fa-wave-square"></i>
-                <span>Edge</span>
+                <i class="fas fa-tree"></i>
+                <span>VoxSilva</span>
             </div>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
             <div class="nav-links">
                 <a href="index.html" class="nav-link">
                     <i class="fas fa-home"></i>
@@ -37,6 +40,10 @@
                     <i class="fas fa-map-marker-alt"></i>
                     <span>Map</span>
                 </a>
+                <a href="chatbot.html" class="nav-link">
+                    <i class="fas fa-robot"></i>
+                    <span>AI Assistant</span>
+                </a>
                 <a href="account.html" class="nav-link">
                     <i class="fas fa-user"></i>
                     <span>Account</span>
@@ -48,7 +55,7 @@
     <main class="main-content history-page">
         <section class="history-section">
             <h1 class="section-title">Detection History</h1>
-            <p class="section-subtitle">Review past events captured by your Edge AI devices.</p>
+            <p class="section-subtitle">Review past events captured by your VoxSilva sensor network.</p>
 
             <div class="history-filters">
                 <div class="filter-group">
@@ -79,28 +86,64 @@
                 <!-- Example Card 1: Human & Forest Sound -->
                 <div class="history-card">
                     <div class="card-image">
-                        <img src="https://via.placeholder.com/400x300.png?text=Event+Capture" alt="Detection Image">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%2322c55e;stop-opacity:0.1'/%3E%3Cstop offset='100%25' style='stop-color:%2316a34a;stop-opacity:0.2'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23grad)' width='400' height='300'/%3E%3Ccircle cx='200' cy='120' r='40' fill='%2322c55e' opacity='0.2'/%3E%3Cpath d='M 200 100 L 210 130 L 190 130 Z' fill='%2322c55e' opacity='0.3'/%3E%3Ctext x='50%25' y='60%25' dominant-baseline='middle' text-anchor='middle' fill='%231e293b' font-size='20' font-family='Arial' font-weight='bold'%3EEvent Capture%3C/text%3E%3Ctext x='50%25' y='70%25' dominant-baseline='middle' text-anchor='middle' fill='%2364748b' font-size='14' font-family='Arial'%3E2025-11-17 10:30:15%3C/text%3E%3C/svg%3E" alt="Detection Image">
                     </div>
                     <div class="card-content">
+                        <div class="card-header-info">
+                            <div class="event-badge high-priority">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <span>High Priority</span>
+                            </div>
+                            <div class="event-time">
+                                <i class="fas fa-clock"></i>
+                                <span>2025-11-17 10:30:15</span>
+                            </div>
+                        </div>
+                        
                         <div class="card-detections">
-                            <div class="detection-item">
-                                <i class="fas fa-eye detection-icon visual"></i>
+                            <div class="detection-item visual-detection">
+                                <div class="detection-icon-wrapper">
+                                    <i class="fas fa-eye detection-icon visual"></i>
+                                </div>
                                 <div class="detection-info">
                                     <span class="detection-label">Visual Detection</span>
-                                    <span class="detection-value human">Human Detected</span>
+                                    <div class="detection-value-wrapper">
+                                        <span class="detection-value human">Human Detected</span>
+                                        <span class="detection-badge alert">Alert</span>
+                                    </div>
+                                    <span class="detection-desc">Human presence detected by ESP32 Cam</span>
                                 </div>
                             </div>
-                            <div class="detection-item">
-                                <i class="fas fa-volume-up detection-icon audio"></i>
+                            <div class="detection-item audio-detection">
+                                <div class="detection-icon-wrapper">
+                                    <i class="fas fa-volume-up detection-icon audio"></i>
+                                </div>
                                 <div class="detection-info">
                                     <span class="detection-label">Audio Detection</span>
-                                    <span class="detection-value">Forest Sound</span>
+                                    <div class="detection-value-wrapper">
+                                        <span class="detection-value">Forest Sound</span>
+                                        <span class="detection-badge normal">Normal</span>
+                                    </div>
+                                    <span class="detection-desc">Natural forest ambient sound detected</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="card-meta">
-                            <p><i class="fas fa-clock"></i> 2025-11-17 10:30:15</p>
-                            <p><i class="fas fa-desktop"></i> Device 001</p>
+                        
+                        <div class="card-footer">
+                            <div class="device-info">
+                                <i class="fas fa-desktop"></i>
+                                <div>
+                                    <span class="device-label">Device</span>
+                                    <span class="device-name">Device 001</span>
+                                </div>
+                            </div>
+                            <div class="location-info">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <span class="location-label">Location</span>
+                                    <span class="location-name">Sector A-12</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -108,28 +151,64 @@
                 <!-- Example Card 2: No Human & Chainsaw -->
                 <div class="history-card">
                     <div class="card-image">
-                        <img src="https://via.placeholder.com/400x300.png?text=Event+Capture" alt="Detection Image">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Cdefs%3E%3ClinearGradient id='grad2' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23dc2626;stop-opacity:0.1'/%3E%3Cstop offset='100%25' style='stop-color:%23f59e0b;stop-opacity:0.2'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23grad2)' width='400' height='300'/%3E%3Ccircle cx='200' cy='120' r='40' fill='%23dc2626' opacity='0.2'/%3E%3Cpath d='M 200 100 L 210 130 L 190 130 Z' fill='%23dc2626' opacity='0.3'/%3E%3Ctext x='50%25' y='60%25' dominant-baseline='middle' text-anchor='middle' fill='%231e293b' font-size='20' font-family='Arial' font-weight='bold'%3EEvent Capture%3C/text%3E%3Ctext x='50%25' y='70%25' dominant-baseline='middle' text-anchor='middle' fill='%2364748b' font-size='14' font-family='Arial'%3E2025-11-17 09:15:45%3C/text%3E%3C/svg%3E" alt="Detection Image">
                     </div>
                     <div class="card-content">
+                        <div class="card-header-info">
+                            <div class="event-badge critical">
+                                <i class="fas fa-exclamation-circle"></i>
+                                <span>Critical Alert</span>
+                            </div>
+                            <div class="event-time">
+                                <i class="fas fa-clock"></i>
+                                <span>2025-11-17 09:15:45</span>
+                            </div>
+                        </div>
+                        
                         <div class="card-detections">
-                            <div class="detection-item">
-                                <i class="fas fa-eye-slash detection-icon visual"></i>
+                            <div class="detection-item visual-detection">
+                                <div class="detection-icon-wrapper">
+                                    <i class="fas fa-eye-slash detection-icon visual"></i>
+                                </div>
                                 <div class="detection-info">
                                     <span class="detection-label">Visual Detection</span>
-                                    <span class="detection-value">No Human</span>
+                                    <div class="detection-value-wrapper">
+                                        <span class="detection-value">No Human</span>
+                                        <span class="detection-badge normal">Clear</span>
+                                    </div>
+                                    <span class="detection-desc">No human presence detected visually</span>
                                 </div>
                             </div>
-                            <div class="detection-item">
-                                <i class="fas fa-volume-up detection-icon audio"></i>
+                            <div class="detection-item audio-detection critical-audio">
+                                <div class="detection-icon-wrapper">
+                                    <i class="fas fa-volume-up detection-icon audio"></i>
+                                </div>
                                 <div class="detection-info">
                                     <span class="detection-label">Audio Detection</span>
-                                    <span class="detection-value chainsaw">Chainsaw Detected</span>
+                                    <div class="detection-value-wrapper">
+                                        <span class="detection-value chainsaw">Chainsaw Detected</span>
+                                        <span class="detection-badge critical-badge">Critical</span>
+                                    </div>
+                                    <span class="detection-desc">⚠️ Illegal logging activity detected!</span>
                                 </div>
                             </div>
                         </div>
-                         <div class="card-meta">
-                            <p><i class="fas fa-clock"></i> 2025-11-17 09:15:45</p>
-                            <p><i class="fas fa-desktop"></i> Device 002</p>
+                        
+                        <div class="card-footer">
+                            <div class="device-info">
+                                <i class="fas fa-desktop"></i>
+                                <div>
+                                    <span class="device-label">Device</span>
+                                    <span class="device-name">Device 002</span>
+                                </div>
+                            </div>
+                            <div class="location-info">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <span class="location-label">Location</span>
+                                    <span class="location-name">Sector B-05</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -137,28 +216,64 @@
                  <!-- Example Card 3: No Human & Forest -->
                 <div class="history-card">
                     <div class="card-image">
-                        <img src="https://via.placeholder.com/400x300.png?text=Event+Capture" alt="Detection Image">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Cdefs%3E%3ClinearGradient id='grad3' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%2322c55e;stop-opacity:0.1'/%3E%3Cstop offset='100%25' style='stop-color:%2310b981;stop-opacity:0.2'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23grad3)' width='400' height='300'/%3E%3Ccircle cx='200' cy='120' r='40' fill='%2322c55e' opacity='0.2'/%3E%3Cpath d='M 200 100 L 210 130 L 190 130 Z' fill='%2322c55e' opacity='0.3'/%3E%3Ctext x='50%25' y='60%25' dominant-baseline='middle' text-anchor='middle' fill='%231e293b' font-size='20' font-family='Arial' font-weight='bold'%3EEvent Capture%3C/text%3E%3Ctext x='50%25' y='70%25' dominant-baseline='middle' text-anchor='middle' fill='%2364748b' font-size='14' font-family='Arial'%3E2025-11-17 08:05:20%3C/text%3E%3C/svg%3E" alt="Detection Image">
                     </div>
                     <div class="card-content">
+                        <div class="card-header-info">
+                            <div class="event-badge normal-priority">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Normal</span>
+                            </div>
+                            <div class="event-time">
+                                <i class="fas fa-clock"></i>
+                                <span>2025-11-17 08:05:20</span>
+                            </div>
+                        </div>
+                        
                         <div class="card-detections">
-                            <div class="detection-item">
-                                <i class="fas fa-eye-slash detection-icon visual"></i>
+                            <div class="detection-item visual-detection">
+                                <div class="detection-icon-wrapper">
+                                    <i class="fas fa-eye-slash detection-icon visual"></i>
+                                </div>
                                 <div class="detection-info">
                                     <span class="detection-label">Visual Detection</span>
-                                    <span class="detection-value">No Human</span>
+                                    <div class="detection-value-wrapper">
+                                        <span class="detection-value">No Human</span>
+                                        <span class="detection-badge normal">Clear</span>
+                                    </div>
+                                    <span class="detection-desc">No human presence detected visually</span>
                                 </div>
                             </div>
-                            <div class="detection-item">
-                                <i class="fas fa-volume-up detection-icon audio"></i>
+                            <div class="detection-item audio-detection">
+                                <div class="detection-icon-wrapper">
+                                    <i class="fas fa-volume-up detection-icon audio"></i>
+                                </div>
                                 <div class="detection-info">
                                     <span class="detection-label">Audio Detection</span>
-                                    <span class="detection-value">Forest Sound</span>
+                                    <div class="detection-value-wrapper">
+                                        <span class="detection-value">Forest Sound</span>
+                                        <span class="detection-badge normal">Normal</span>
+                                    </div>
+                                    <span class="detection-desc">Natural forest ambient sound detected</span>
                                 </div>
                             </div>
                         </div>
-                         <div class="card-meta">
-                            <p><i class="fas fa-clock"></i> 2025-11-17 08:05:20</p>
-                            <p><i class="fas fa-desktop"></i> Device 001</p>
+                        
+                        <div class="card-footer">
+                            <div class="device-info">
+                                <i class="fas fa-desktop"></i>
+                                <div>
+                                    <span class="device-label">Device</span>
+                                    <span class="device-name">Device 001</span>
+                                </div>
+                            </div>
+                            <div class="location-info">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <span class="location-label">Location</span>
+                                    <span class="location-name">Sector A-08</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -171,160 +286,27 @@
             </div>
         </section>
     </main>
-<<<<<<< HEAD
-
-    <style>
-        .history-filters {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            background-color: #fff;
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-            margin-bottom: 2rem;
-        }
-        .filter-group {
-            display: flex;
-            flex-direction: column;
-        }
-        .filter-group label {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: #555;
-            font-size: 0.9rem;
-        }
-        .filter-group label i {
-            margin-right: 0.5rem;
-            color: #007bff;
-        }
-        .filter-input {
-            padding: 0.8rem;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 1rem;
-            min-width: 200px;
-        }
-        .filter-btn {
-            align-self: flex-end;
-            padding: 0.8rem 1.5rem;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: background-color 0.3s;
-        }
-        .filter-btn:hover {
-            background-color: #0056b3;
-        }
-        .history-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-            gap: 2rem;
-        }
-        .history-card {
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .history-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-        }
-        .card-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        .card-content {
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-        .card-detections {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-        .detection-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        .detection-icon {
-            font-size: 1.8rem;
-            width: 30px;
-            text-align: center;
-        }
-        .detection-icon.visual { color: #007bff; }
-        .detection-icon.audio { color: #fd7e14; }
-
-        .detection-info {
-            display: flex;
-            flex-direction: column;
-        }
-        .detection-label {
-            font-size: 0.85rem;
-            color: #6c757d;
-            margin-bottom: 0.1rem;
-        }
-        .detection-value {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #343a40;
-        }
-        .detection-value.human, .detection-value.chainsaw {
-            color: #dc3545; /* Red for critical alerts */
-        }
-        .card-meta {
-            margin-top: auto;
-            padding-top: 1rem;
-            border-top: 1px solid #eee;
-            font-size: 0.9rem;
-            color: #666;
-            display: flex;
-            justify-content: space-between;
-        }
-        .card-meta p {
-            margin: 0;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .pagination {
-            display: flex;
-            justify-content: center;
-            margin-top: 2rem;
-            gap: 0.5rem;
-        }
-        .page-link {
-            padding: 0.8rem 1.2rem;
-            text-decoration: none;
-            color: #007bff;
-            border: 1px solid #dee2e6;
-            border-radius: 5px;
-            transition: background-color 0.3s, color 0.3s;
-        }
-        .page-link:hover {
-            background-color: #e9ecef;
-            color: #0056b3;
-        }
-        .page-link.active {
-            background-color: #007bff;
-            color: white;
-            border-color: #007bff;
-        }
-    </style>
-=======
     <script src="app.js"></script>
->>>>>>> 4b86f3e055f880d061692c0125e1cd9e92b46bc4
+    <script>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (menuToggle) {
+                menuToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                    const icon = menuToggle.querySelector('i');
+                    if (navLinks.classList.contains('active')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>

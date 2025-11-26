@@ -2,20 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <link rel="stylesheet" href="styleMaps.css" />
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <title>map</title>
+    <title>VoxSilva - Sensor Network Map</title>
 </head>
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
-                <i class="fas fa-wave-square"></i>
-                <span>Edge</span>
+                <i class="fas fa-tree"></i>
+                <span>VoxSilva</span>
             </div>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
             <div class="nav-links">
                 <a href="index.html" class="nav-link">
                     <i class="fas fa-home"></i>
@@ -37,6 +41,10 @@
                     <i class="fas fa-map-marker-alt"></i>
                     <span>Map</span>
                 </a>
+                <a href="chatbot.html" class="nav-link">
+                    <i class="fas fa-robot"></i>
+                    <span>AI Assistant</span>
+                </a>
                 <a href="account.html" class="nav-link">
                     <i class="fas fa-user"></i>
                     <span>Account</span>
@@ -46,8 +54,16 @@
     </nav>
 
     <main class="main-content">
+        <button class="sidebar-toggle mobile-only" aria-label="Toggle sidebar">
+            <i class="fas fa-bars"></i>
+            <span>Menu</span>
+        </button>
+        <div class="sidebar-overlay mobile-only" id="sidebar-overlay"></div>
         <div class="map-container">
-            <div class="sidebar">
+            <div class="sidebar" id="sidebar">
+                <button class="sidebar-close mobile-only" aria-label="Close sidebar">
+                    <i class="fas fa-times"></i>
+                </button>
                 <div class="marker-controls">
                     <h3>Device Controls</h3>
                     <input type="text" id="marker-name" placeholder="Enter marker name">
@@ -64,6 +80,79 @@
 
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script src="maps.js"></script>
+    <script>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (menuToggle) {
+                menuToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                    const icon = menuToggle.querySelector('i');
+                    if (navLinks.classList.contains('active')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            }
+
+            // Sidebar toggle for mobile
+            const sidebarToggle = document.querySelector('.sidebar-toggle');
+            const sidebar = document.getElementById('sidebar');
+            const sidebarClose = document.querySelector('.sidebar-close');
+            const sidebarOverlay = document.getElementById('sidebar-overlay');
+            
+            function openSidebar() {
+                if (sidebar) sidebar.classList.add('active');
+                if (sidebarOverlay) sidebarOverlay.classList.add('active');
+            }
+            
+            function closeSidebar() {
+                if (sidebar) sidebar.classList.remove('active');
+                if (sidebarOverlay) sidebarOverlay.classList.remove('active');
+                // Invalidate map after closing sidebar to ensure it renders correctly
+                setTimeout(function() {
+                    if (window.map) {
+                        window.map.invalidateSize();
+                    }
+                }, 300);
+            }
+            
+            if (sidebarToggle) {
+                sidebarToggle.addEventListener('click', openSidebar);
+            }
+            
+            if (sidebarClose) {
+                sidebarClose.addEventListener('click', closeSidebar);
+            }
+
+            if (sidebarOverlay) {
+                sidebarOverlay.addEventListener('click', closeSidebar);
+            }
+
+            // Invalidate map on window resize
+            let resizeTimer;
+            window.addEventListener('resize', function() {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(function() {
+                    if (window.map) {
+                        window.map.invalidateSize();
+                    }
+                }, 250);
+            });
+
+            // Invalidate map after a short delay to ensure DOM is ready
+            setTimeout(function() {
+                if (window.map) {
+                    window.map.invalidateSize();
+                }
+            }, 100);
+        });
+    </script>
 
 </body>
 </html>

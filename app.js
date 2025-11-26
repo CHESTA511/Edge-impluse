@@ -1,5 +1,5 @@
 // Main Application JavaScript
-// Edge - Sistem Monitoring Gempa Real-Time
+// VoxSilva - Low-Cost AI-Powered Forest Surveillance System
 
 // Data storage (simulasi)
 let deviceData = {
@@ -91,8 +91,32 @@ function initMonitoringPage() {
 
 // Device page initialization
 function initDevicePage() {
-    checkDeviceStatus();
-    setInterval(checkDeviceStatus, 3000);
+    // Setup filter buttons
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const filter = btn.getAttribute('data-filter');
+            filterDevices(filter);
+        });
+    });
+    
+    // Setup modal close
+    const modal = document.getElementById('device-modal');
+    if (modal) {
+        const closeBtn = modal.querySelector('.close');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+        }
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    }
 }
 
 // History page initialization
@@ -110,8 +134,8 @@ function connectDevice() {
     deviceData.connected = true;
     deviceData.devices = [
         {
-            id: 'EDGE-001',
-            name: 'Sensor Gempa - Jakarta',
+            id: 'VXS-001',
+            name: 'VoxSilva Node - Jakarta',
             location: 'Jakarta Pusat',
             status: 'normal',
             lastUpdate: new Date(),
@@ -409,6 +433,197 @@ function addEventLog(message, details) {
     if (window.location.pathname.includes('history.html')) {
         loadEventLogs();
     }
+}
+
+// Device detail modal
+function openDeviceDetail(deviceId) {
+    const modal = document.getElementById('device-modal');
+    const content = document.getElementById('device-detail-content');
+    
+    if (!modal || !content) return;
+    
+    // Get device data (simulated)
+    const deviceInfo = getDeviceInfo(deviceId);
+    
+    content.innerHTML = `
+        <h2>Detail Perangkat: ${deviceInfo.name}</h2>
+        <div class="device-detail-grid">
+            <div class="detail-section">
+                <h3><i class="fas fa-info-circle"></i> Informasi Umum</h3>
+                <div class="detail-item">
+                    <span class="detail-label">ID Perangkat:</span>
+                    <span class="detail-value">${deviceInfo.id}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Tipe:</span>
+                    <span class="detail-value">${deviceInfo.type}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Lokasi:</span>
+                    <span class="detail-value">${deviceInfo.location}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Status:</span>
+                    <span class="detail-value ${deviceInfo.statusClass}">${deviceInfo.status}</span>
+                </div>
+            </div>
+            
+            <div class="detail-section">
+                <h3><i class="fas fa-battery-three-quarters"></i> Baterai & Daya</h3>
+                <div class="detail-item">
+                    <span class="detail-label">Level Baterai:</span>
+                    <span class="detail-value">${deviceInfo.battery}%</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Durasi Penggunaan:</span>
+                    <span class="detail-value">${deviceInfo.uptime}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Terakhir Update:</span>
+                    <span class="detail-value">${formatTime(new Date())}</span>
+                </div>
+            </div>
+            
+            <div class="detail-section">
+                <h3><i class="fas fa-signal"></i> Koneksi</h3>
+                <div class="detail-item">
+                    <span class="detail-label">Terhubung ke:</span>
+                    <span class="detail-value">${deviceInfo.connectedTo}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Radius Cakupan:</span>
+                    <span class="detail-value">${deviceInfo.radius}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Node Terhubung:</span>
+                    <span class="detail-value">${deviceInfo.connectedNodes || 'N/A'}</span>
+                </div>
+            </div>
+            
+            <div class="detail-section">
+                <h3><i class="fas fa-clipboard-list"></i> System Log</h3>
+                <div class="log-container-detail">
+                    ${deviceInfo.logs.map(log => `
+                        <div class="log-entry">
+                            <span class="log-time">${formatTime(log.time)}</span>
+                            <span class="log-message">${log.message}</span>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        </div>
+    `;
+    
+    modal.style.display = 'block';
+}
+
+function getDeviceInfo(deviceId) {
+    // Simulated device data
+    const devices = {
+        'BS-001': {
+            id: 'BS-001',
+            name: 'Base Station 001',
+            type: 'Base Station',
+            location: '-6.2000, 106.8167',
+            status: 'Online',
+            statusClass: 'online',
+            battery: 85,
+            uptime: '15 hari',
+            connectedTo: 'Main Network',
+            radius: 'N/A',
+            connectedNodes: '4 Node',
+            logs: [
+                { time: new Date(), message: 'System started' },
+                { time: new Date(Date.now() - 3600000), message: 'Node NODE-001 connected' },
+                { time: new Date(Date.now() - 7200000), message: 'Data sync completed' }
+            ]
+        },
+        'BS-002': {
+            id: 'BS-002',
+            name: 'Base Station 002',
+            type: 'Base Station',
+            location: '-6.2500, 106.8500',
+            status: 'Online',
+            statusClass: 'online',
+            battery: 92,
+            uptime: '12 hari',
+            connectedTo: 'Main Network',
+            radius: 'N/A',
+            connectedNodes: '5 Node',
+            logs: [
+                { time: new Date(), message: 'System started' },
+                { time: new Date(Date.now() - 1800000), message: 'Node NODE-005 connected' }
+            ]
+        },
+        'NODE-001': {
+            id: 'NODE-001',
+            name: 'Node 001',
+            type: 'Node',
+            location: '-6.2100, 106.8200',
+            status: 'Online',
+            statusClass: 'online',
+            battery: 65,
+            uptime: '8 hari',
+            connectedTo: 'BS-001',
+            radius: '2.5 km',
+            connectedNodes: 'N/A',
+            logs: [
+                { time: new Date(), message: 'MPU6050 sensor active' },
+                { time: new Date(Date.now() - 600000), message: 'ESP32 Cam initialized' }
+            ]
+        },
+        'NODE-002': {
+            id: 'NODE-002',
+            name: 'Node 002',
+            type: 'Node',
+            location: '-6.2200, 106.8300',
+            status: 'Online',
+            statusClass: 'online',
+            battery: 78,
+            uptime: '10 hari',
+            connectedTo: 'BS-001',
+            radius: '2.0 km',
+            connectedNodes: 'N/A',
+            logs: [
+                { time: new Date(), message: 'Audio detection active' },
+                { time: new Date(Date.now() - 300000), message: 'Chainsaw detected' }
+            ]
+        },
+        'NODE-003': {
+            id: 'NODE-003',
+            name: 'Node 003',
+            type: 'Node',
+            location: '-6.2300, 106.8400',
+            status: 'Warning',
+            statusClass: 'warning',
+            battery: 25,
+            uptime: '5 hari',
+            connectedTo: 'BS-002',
+            radius: '1.8 km',
+            connectedNodes: 'N/A',
+            logs: [
+                { time: new Date(), message: 'Low battery warning' },
+                { time: new Date(Date.now() - 900000), message: 'Movement detected' }
+            ]
+        }
+    };
+    
+    return devices[deviceId] || devices['BS-001'];
+}
+
+function filterDevices(filter) {
+    const deviceCards = document.querySelectorAll('.device-card-item');
+    deviceCards.forEach(card => {
+        if (filter === 'all') {
+            card.style.display = 'block';
+        } else if (filter === 'base-station' && card.classList.contains('base-station')) {
+            card.style.display = 'block';
+        } else if (filter === 'node' && card.classList.contains('node')) {
+            card.style.display = 'block';
+        } else {
+            card.style.display = 'none';
+        }
+    });
 }
 
 // Utility functions

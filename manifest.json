@@ -1,11 +1,11 @@
 {
-  "name": "Edge - Sistem Monitoring Gempa Real-Time",
-  "short_name": "Edge",
-  "description": "Sistem monitoring gempa real-time dengan sensor Edge",
+  "name": "VoxSilva - Forest Surveillance System",
+  "short_name": "VoxSilva",
+  "description": "Low-Cost AI-Powered Forest Surveillance System untuk deteksi illegal logging",
   "start_url": "/index.html",
   "display": "standalone",
-  "background_color": "#1e3a5f",
-  "theme_color": "#3b82f6",
+  "background_color": "#1e3a2f",
+  "theme_color": "#22c55e",
   "orientation": "portrait-primary",
   "icons": [
     {

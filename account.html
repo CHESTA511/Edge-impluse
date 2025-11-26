@@ -2,19 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="account.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <title>Account</title>
+    <title>VoxSilva - Account Settings</title>
 </head>
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
-                <i class="fas fa-wave-square"></i>
-                <span>Edge</span>
+                <i class="fas fa-tree"></i>
+                <span>VoxSilva</span>
             </div>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
             <div class="nav-links">
                 <a href="index.html" class="nav-link">
                     <i class="fas fa-home"></i>
@@ -36,6 +40,10 @@
                     <i class="fas fa-map-marker-alt"></i>
                     <span>Map</span>
                 </a>
+                <a href="chatbot.html" class="nav-link">
+                    <i class="fas fa-robot"></i>
+                    <span>AI Assistant</span>
+                </a>
                 <a href="account.html" class="nav-link active">
                     <i class="fas fa-user"></i>
                     <span>Account</span>
@@ -55,7 +63,7 @@
                 <div class="account-card profile-photo-card">
                     <h3>Profile Photo</h3>
                     <div class="profile-photo-wrapper">
-                        <img src="https://via.placeholder.com/150" alt="Profile Photo" class="profile-photo">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Crect fill='%23e2e8f0' width='150' height='150'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23475569' font-size='48' font-family='Arial'%3E%3C/text%3E%3C/svg%3E" alt="Profile Photo" class="profile-photo">
                         <button class="btn-secondary">Change Photo</button>
                     </div>
                 </div>
@@ -96,9 +104,150 @@
                     <h3>Session Management</h3>
                     <button class="btn-primary logout-btn">Logout</button>
                 </div>
+
+                <div class="account-card">
+                    <h3>Legal & Privacy</h3>
+                    <div class="legal-links">
+                        <a href="#privacy-policy" class="legal-link" onclick="showPrivacyPolicy()">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Privacy Policy</span>
+                        </a>
+                        <a href="#terms" class="legal-link" onclick="showTerms()">
+                            <i class="fas fa-file-contract"></i>
+                            <span>Terms and Conditions</span>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
+
+    <!-- Privacy Policy Modal -->
+    <div id="privacy-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('privacy-modal')">&times;</span>
+            <h2>Privacy Policy</h2>
+            <div class="legal-content">
+                <h3>1. Informasi yang Kami Kumpulkan</h3>
+                <p>VoxSilva mengumpulkan data berikut untuk operasional sistem:</p>
+                <ul>
+                    <li>Data sensor dari perangkat (MPU6050, ESP32 Cam, audio detection)</li>
+                    <li>Lokasi perangkat dan koordinat GPS</li>
+                    <li>Data deteksi illegal logging</li>
+                    <li>Informasi akun pengguna (nama, email)</li>
+                </ul>
+
+                <h3>2. Penggunaan Data</h3>
+                <p>Data yang dikumpulkan digunakan untuk:</p>
+                <ul>
+                    <li>Monitoring dan deteksi illegal logging</li>
+                    <li>Analisis dan pelaporan aktivitas mencurigakan</li>
+                    <li>Pemeliharaan dan optimasi sistem</li>
+                    <li>Komunikasi dengan pengguna terkait alert dan notifikasi</li>
+                </ul>
+
+                <h3>3. Keamanan Data</h3>
+                <p>Kami menggunakan enkripsi dan protokol keamanan untuk melindungi data Anda. Data disimpan di server yang aman dan hanya dapat diakses oleh personel yang berwenang.</p>
+
+                <h3>4. Pembagian Data</h3>
+                <p>Data tidak akan dibagikan kepada pihak ketiga tanpa persetujuan pengguna, kecuali diwajibkan oleh hukum.</p>
+
+                <h3>5. Hak Pengguna</h3>
+                <p>Pengguna memiliki hak untuk:</p>
+                <ul>
+                    <li>Mengakses data pribadi mereka</li>
+                    <li>Meminta penghapusan data</li>
+                    <li>Memperbarui informasi akun</li>
+                </ul>
+
+                <p><strong>Terakhir diperbarui:</strong> November 2024</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms and Conditions Modal -->
+    <div id="terms-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('terms-modal')">&times;</span>
+            <h2>Terms and Conditions</h2>
+            <div class="legal-content">
+                <h3>1. Penerimaan Syarat</h3>
+                <p>Dengan menggunakan sistem VoxSilva, Anda menyetujui syarat dan ketentuan berikut.</p>
+
+                <h3>2. Penggunaan Sistem</h3>
+                <p>Pengguna diizinkan untuk:</p>
+                <ul>
+                    <li>Mengakses dashboard monitoring</li>
+                    <li>Melihat data sensor dan deteksi</li>
+                    <li>Mengelola perangkat dalam jaringan</li>
+                    <li>Menggunakan fitur AI Assistant</li>
+                </ul>
+
+                <h3>3. Larangan</h3>
+                <p>Pengguna dilarang untuk:</p>
+                <ul>
+                    <li>Menggunakan sistem untuk tujuan ilegal</li>
+                    <li>Mengganggu atau merusak infrastruktur sistem</li>
+                    <li>Mengakses data pengguna lain tanpa izin</li>
+                    <li>Menyebarkan informasi palsu atau menyesatkan</li>
+                </ul>
+
+                <h3>4. Tanggung Jawab</h3>
+                <p>VoxSilva menyediakan sistem "as is" tanpa jaminan. Pengguna bertanggung jawab atas penggunaan sistem dan keputusan yang diambil berdasarkan data yang diberikan.</p>
+
+                <h3>5. Perubahan Syarat</h3>
+                <p>Kami berhak mengubah syarat dan ketentuan kapan saja. Perubahan akan diberitahukan kepada pengguna melalui email atau notifikasi di sistem.</p>
+
+                <h3>6. Kontak</h3>
+                <p>Untuk pertanyaan tentang Terms and Conditions, silakan hubungi kami melalui email: support@voxsilva.com</p>
+
+                <p><strong>Terakhir diperbarui:</strong> November 2024</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showPrivacyPolicy() {
+            document.getElementById('privacy-modal').style.display = 'block';
+        }
+
+        function showTerms() {
+            document.getElementById('terms-modal').style.display = 'block';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        }
+
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (menuToggle) {
+                menuToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                    const icon = menuToggle.querySelector('i');
+                    if (navLinks.classList.contains('active')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            }
+        });
+    </script>
 
 </body>
 </html>

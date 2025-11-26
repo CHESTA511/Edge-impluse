@@ -3,19 +3,22 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Edge - Manajemen Perangkat</title>
+        <title>VoxSilva - Manajemen Perangkat</title>
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <link rel="manifest" href="manifest.json">
-        <meta name="theme-color" content="#3b82f6">
+        <meta name="theme-color" content="#22c55e">
     </head>
 <body>
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">
-                <i class="fas fa-wave-square"></i>
-                <span>Edge</span>
-            </div>
+                <div class="logo">
+                    <i class="fas fa-tree"></i>
+                    <span>VoxSilva</span>
+                </div>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
             <div class="nav-links">
                 <a href="index.html" class="nav-link">
                     <i class="fas fa-home"></i>
@@ -37,6 +40,10 @@
                     <i class="fas fa-map-marker-alt"></i>
                     <span>Map</span>
                 </a>
+                <a href="chatbot.html" class="nav-link">
+                    <i class="fas fa-robot"></i>
+                    <span>AI Assistant</span>
+                </a>
                 <a href="account.html" class="nav-link">
                     <i class="fas fa-user"></i>
                     <span>Account</span>
@@ -48,26 +55,189 @@
     <main class="main-content device-page">
         <section class="device-section">
             <h1 class="section-title">Manajemen Perangkat</h1>
+            <p class="section-subtitle">Kelola Base Station dan Node dalam jaringan VoxSilva</p>
 
-            <div class="device-card device-status-card empty">
-                <div class="device-card-header">
-                    <div class="device-card-icon">
-                        <i class="fas fa-plug"></i>
+            <div class="device-filters">
+                <button class="filter-btn active" data-filter="all">Semua</button>
+                <button class="filter-btn" data-filter="base-station">Base Station</button>
+                <button class="filter-btn" data-filter="node">Node</button>
+            </div>
+
+            <div class="devices-grid" id="devices-grid">
+                <!-- Base Station Cards -->
+                <div class="device-card-item base-station" onclick="openDeviceDetail('BS-001')">
+                    <div class="device-card-header-item">
+                        <div class="device-type-badge base-station-badge">
+                            <i class="fas fa-server"></i>
+                            <span>Base Station</span>
+                        </div>
+                        <div class="device-status-indicator online"></div>
                     </div>
-                    <div>
-                        <p class="device-card-title">Status Koneksi Device</p>
-                        <p class="device-card-subtitle">Pantau koneksi perangkat Edge Anda secara real-time.</p>
+                    <div class="device-card-body">
+                        <h3 class="device-name">Base Station 001</h3>
+                        <p class="device-id">ID: BS-001</p>
+                        <div class="device-stats">
+                            <div class="stat-item">
+                                <i class="fas fa-satellite-dish"></i>
+                                <span>4 Node Terhubung</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-battery-three-quarters"></i>
+                                <span>Baterai: 85%</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-clock"></i>
+                                <span>Uptime: 15 hari</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="device-empty-state">
-                    <i class="fas fa-unlink"></i>
-                    <p>Belum ada device yang terhubung</p>
-                    <small>Hubungkan perangkat Edge untuk melihat status koneksinya di sini.</small>
+
+                <div class="device-card-item base-station" onclick="openDeviceDetail('BS-002')">
+                    <div class="device-card-header-item">
+                        <div class="device-type-badge base-station-badge">
+                            <i class="fas fa-server"></i>
+                            <span>Base Station</span>
+                        </div>
+                        <div class="device-status-indicator online"></div>
+                    </div>
+                    <div class="device-card-body">
+                        <h3 class="device-name">Base Station 002</h3>
+                        <p class="device-id">ID: BS-002</p>
+                        <div class="device-stats">
+                            <div class="stat-item">
+                                <i class="fas fa-satellite-dish"></i>
+                                <span>5 Node Terhubung</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-battery-full"></i>
+                                <span>Baterai: 92%</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-clock"></i>
+                                <span>Uptime: 12 hari</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Node Cards -->
+                <div class="device-card-item node" onclick="openDeviceDetail('NODE-001')">
+                    <div class="device-card-header-item">
+                        <div class="device-type-badge node-badge">
+                            <i class="fas fa-satellite-dish"></i>
+                            <span>Node</span>
+                        </div>
+                        <div class="device-status-indicator online"></div>
+                    </div>
+                    <div class="device-card-body">
+                        <h3 class="device-name">Node 001</h3>
+                        <p class="device-id">ID: NODE-001</p>
+                        <div class="device-stats">
+                            <div class="stat-item">
+                                <i class="fas fa-signal"></i>
+                                <span>Terhubung ke BS-001</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-battery-half"></i>
+                                <span>Baterai: 65%</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Radius: 2.5 km</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="device-card-item node" onclick="openDeviceDetail('NODE-002')">
+                    <div class="device-card-header-item">
+                        <div class="device-type-badge node-badge">
+                            <i class="fas fa-satellite-dish"></i>
+                            <span>Node</span>
+                        </div>
+                        <div class="device-status-indicator online"></div>
+                    </div>
+                    <div class="device-card-body">
+                        <h3 class="device-name">Node 002</h3>
+                        <p class="device-id">ID: NODE-002</p>
+                        <div class="device-stats">
+                            <div class="stat-item">
+                                <i class="fas fa-signal"></i>
+                                <span>Terhubung ke BS-001</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-battery-three-quarters"></i>
+                                <span>Baterai: 78%</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Radius: 2.0 km</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="device-card-item node" onclick="openDeviceDetail('NODE-003')">
+                    <div class="device-card-header-item">
+                        <div class="device-type-badge node-badge">
+                            <i class="fas fa-satellite-dish"></i>
+                            <span>Node</span>
+                        </div>
+                        <div class="device-status-indicator warning"></div>
+                    </div>
+                    <div class="device-card-body">
+                        <h3 class="device-name">Node 003</h3>
+                        <p class="device-id">ID: NODE-003</p>
+                        <div class="device-stats">
+                            <div class="stat-item">
+                                <i class="fas fa-signal"></i>
+                                <span>Terhubung ke BS-002</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-battery-quarter"></i>
+                                <span>Baterai: 25%</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Radius: 1.8 km</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
+
+    <!-- Device Detail Modal -->
+    <div id="device-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="device-detail-content"></div>
+        </div>
+    </div>
     <script src="app.js"></script>
+    <script>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (menuToggle) {
+                menuToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                    const icon = menuToggle.querySelector('i');
+                    if (navLinks.classList.contains('active')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
 

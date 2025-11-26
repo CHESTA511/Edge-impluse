@@ -3,20 +3,23 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Edge - Sistem Monitoring Gempa Real-Time</title>
+        <title>VoxSilva - Forest Surveillance System</title>
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <link rel="manifest" href="manifest.json">
-        <meta name="theme-color" content="#3b82f6">
+        <meta name="theme-color" content="#22c55e">
     </head>
     <body>
         <!-- Navigation Bar -->
         <nav class="navbar">
             <div class="nav-container">
                 <div class="logo">
-                    <i class="fas fa-wave-square"></i>
-                    <span>Edge</span>
+                    <i class="fas fa-tree"></i>
+                    <span>VoxSilva</span>
                 </div>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
                 <div class="nav-links">
                     <a href="index.html" class="nav-link active">
                         <i class="fas fa-home"></i>
@@ -38,6 +41,10 @@
                         <i class="fas fa-map-marker-alt"></i>
                         <span>Map</span>
                     </a>
+                    <a href="chatbot.html" class="nav-link">
+                        <i class="fas fa-robot"></i>
+                        <span>AI Assistant</span>
+                    </a>
                     <a href="account.html" class="nav-link">
                         <i class="fas fa-user"></i>
                         <span>Account</span>
@@ -53,13 +60,13 @@
                 <div class="welcome-icon">
                     <i class="fas fa-home"></i>
                 </div>
-                <h1 class="welcome-title">Selamat Datang di Edge</h1>
+                <h1 class="welcome-title">Selamat Datang di VoxSilva</h1>
                 <div class="welcome-card">
-                    <h2 class="card-title">Sistem Monitoring Gempa Real-Time</h2>
+                    <h2 class="card-title">Low-Cost AI-Powered Forest Surveillance System</h2>
                     <p class="card-description">
-                        Edge membantu Anda memantau aktivitas seismik secara langsung dari perangkat sensor. 
-                        Gunakan navigasi di atas untuk melihat data real-time, memeriksa riwayat peristiwa, 
-                        atau melihat lokasi sensor di peta.
+                        VoxSilva adalah sistem pemantauan hutan berbasis AI untuk mendeteksi aktivitas illegal logging. 
+                        Sistem ini menggunakan jaringan sensor yang memantau setiap titik di hutan dengan radius 1-3km per node.
+                        Pantau deteksi manusia, suara chainsaw, dan pergerakan perangkat secara real-time.
                     </p>
                     <button class="btn-primary">
                         <i class="fas fa-play"></i>
@@ -68,54 +75,151 @@
                 </div>
             </section>
 
+            <!-- Sensor Overview Section -->
+            <section class="overview-section">
+                <h2 class="section-title">Ikhtisar Data Sensor</h2>
+                <div class="overview-grid">
+                    <div class="overview-card">
+                        <div class="overview-icon">
+                            <i class="fas fa-satellite-dish"></i>
+                        </div>
+                        <div class="overview-info">
+                            <h3>Total Node</h3>
+                            <p class="overview-value" id="total-nodes">12</p>
+                            <span class="overview-label">Node Aktif</span>
+                        </div>
+                    </div>
+                    <div class="overview-card">
+                        <div class="overview-icon">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <div class="overview-info">
+                            <h3>Base Station</h3>
+                            <p class="overview-value" id="total-base">3</p>
+                            <span class="overview-label">Station Aktif</span>
+                        </div>
+                    </div>
+                    <div class="overview-card">
+                        <div class="overview-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="overview-info">
+                            <h3>Alert Hari Ini</h3>
+                            <p class="overview-value" id="total-alerts">5</p>
+                            <span class="overview-label">Deteksi Mencurigakan</span>
+                        </div>
+                    </div>
+                    <div class="overview-card">
+                        <div class="overview-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="overview-info">
+                            <h3>Data Terkumpul</h3>
+                            <p class="overview-value" id="total-data">1,247</p>
+                            <span class="overview-label">Data Hari Ini</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- AI Recommendations Section -->
+            <section class="ai-recommendations-section">
+                <h2 class="section-title">Rekomendasi AI</h2>
+                <div class="recommendations-card">
+                    <div class="ai-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="recommendations-content">
+                        <h3>Analisis Sistem</h3>
+                        <div class="recommendation-item">
+                            <i class="fas fa-check-circle"></i>
+                            <p><strong>Status Jaringan:</strong> Semua node berfungsi normal. Koneksi Base Station stabil.</p>
+                        </div>
+                        <div class="recommendation-item">
+                            <i class="fas fa-info-circle"></i>
+                            <p><strong>Pemeliharaan:</strong> Node #7 memerlukan pengecekan baterai dalam 3 hari ke depan.</p>
+                        </div>
+                        <div class="recommendation-item">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <p><strong>Perhatian:</strong> Peningkatan aktivitas terdeteksi di sektor timur. Disarankan patroli rutin.</p>
+                        </div>
+                        <button class="btn-primary" onclick="window.location.href='chatbot.html'">
+                            <i class="fas fa-comments"></i>
+                            <span>Chat dengan AI Asisten</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
             <!-- Key Features Section -->
             <section class="features-section">
                 <h2 class="section-title">Fitur Utama</h2>
                 <div class="features-grid">
-                    <!-- Feature 1: Monitoring Real-Time -->
+                    <!-- Feature 1: Sensor Network -->
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <h3 class="feature-title">Sensor Network</h3>
+                        <p class="feature-description">
+                            Pantau jaringan sensor Base Station dan Node yang tersebar di hutan. Setiap node memiliki radius cakupan 1-3km untuk deteksi illegal logging.
+                        </p>
+                        <button class="btn-feature">
+                            Lihat Perangkat →
+                        </button>
+                    </div>
+
+                    <!-- Feature 2: AI Detection -->
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3 class="feature-title">AI Detection System</h3>
+                        <p class="feature-description">
+                            Deteksi otomatis manusia, suara chainsaw, dan pergerakan perangkat menggunakan AI. Dapatkan rekomendasi dari asisten AI untuk pemeliharaan.
+                        </p>
+                        <button class="btn-feature">
+                            Chat dengan AI →
+                        </button>
+                    </div>
+
+                    <!-- Feature 3: Real-Time Monitoring -->
                     <div class="feature-card">
                         <div class="feature-icon">
                             <i class="fas fa-chart-line"></i>
                         </div>
-                        <h3 class="feature-title">Monitoring Real-Time</h3>
+                        <h3 class="feature-title">Real-Time Monitoring</h3>
                         <p class="feature-description">
-                            Lihat data sensor (vibrasi, pergeseran, sumbu) yang diperbarui setiap detik langsung dari perangkat Anda.
+                            Pantau data MPU6050 (x,y,z), deteksi visual ESP32 Cam, dan deteksi audio chainsaw secara real-time dari semua node.
                         </p>
                         <button class="btn-feature">
                             Lihat Monitoring →
-                        </button>
-                    </div>
-
-                    <!-- Feature 2: Riwayat & Replay -->
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-history"></i>
-                        </div>
-                        <h3 class="feature-title">Riwayat & Replay</h3>
-                        <p class="feature-description">
-                            Akses log peristiwa penting (seperti "GEMPA KUAT!") dan putar ulang data historis sensor dalam bentuk grafik.
-                        </p>
-                        <button class="btn-feature">
-                            Lihat History →
-                        </button>
-                    </div>
-
-                    <!-- Feature 3: Peta Lokasi Interaktif -->
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <h3 class="feature-title">Peta Lokasi Interaktif</h3>
-                        <p class="feature-description">
-                            Visualisasikan lokasi perangkat Anda di peta interaktif dan lihat status terakhir mereka secara real-time.
-                        </p>
-                        <button class="btn-feature">
-                            Lihat Peta →
                         </button>
                     </div>
                 </div>
             </section>
         </main>
         <script src="app.js"></script>
+        <script>
+            // Mobile menu toggle
+            document.addEventListener('DOMContentLoaded', function() {
+                const menuToggle = document.querySelector('.mobile-menu-toggle');
+                const navLinks = document.querySelector('.nav-links');
+                
+                if (menuToggle) {
+                    menuToggle.addEventListener('click', function() {
+                        navLinks.classList.toggle('active');
+                        const icon = menuToggle.querySelector('i');
+                        if (navLinks.classList.contains('active')) {
+                            icon.classList.remove('fa-bars');
+                            icon.classList.add('fa-times');
+                        } else {
+                            icon.classList.remove('fa-times');
+                            icon.classList.add('fa-bars');
+                        }
+                    });
+                }
+            });
+        </script>
     </body>
     </html>
