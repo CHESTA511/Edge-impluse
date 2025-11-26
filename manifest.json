@@ -1,0 +1,43 @@
+{
+  "name": "Edge - Sistem Monitoring Gempa Real-Time",
+  "short_name": "Edge",
+  "description": "Sistem monitoring gempa real-time dengan sensor Edge",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#1e3a5f",
+  "theme_color": "#3b82f6",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["utilities", "productivity"],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Monitoring",
+      "short_name": "Monitor",
+      "description": "Buka halaman monitoring real-time",
+      "url": "/monitoring.html",
+      "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "History",
+      "short_name": "History",
+      "description": "Lihat riwayat peristiwa",
+      "url": "/history.html",
+      "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}
+

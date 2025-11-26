@@ -624,3 +624,110 @@ body {
     color: #94a3b8;
 }
 
+/* Device Status Content */
+.device-status-content {
+    padding: 1.5rem;
+}
+
+.status-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    color: #15803d;
+}
+
+.device-info {
+    background-color: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.device-info h3 {
+    color: #0f172a;
+    margin-bottom: 0.75rem;
+    font-size: 1.25rem;
+}
+
+.device-info p {
+    color: #475569;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.status-badge.normal {
+    background-color: rgba(34, 197, 94, 0.15);
+    color: #15803d;
+}
+
+.status-badge.warning {
+    background-color: rgba(239, 68, 68, 0.15);
+    color: #dc2626;
+}
+
+/* Device Footer */
+.device-footer {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(148, 163, 184, 0.2);
+    text-align: center;
+}
+
+/* Log List */
+.log-list {
+    padding: 1rem;
+}
+
+.log-item {
+    background-color: #f8fafc;
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    border-left: 4px solid #3b82f6;
+    transition: transform 0.2s ease;
+}
+
+.log-item:hover {
+    transform: translateX(4px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.log-time {
+    font-size: 0.85rem;
+    color: #64748b;
+    margin-bottom: 0.5rem;
+}
+
+.log-message {
+    font-weight: 600;
+    color: #0f172a;
+    margin-bottom: 0.25rem;
+    font-size: 1rem;
+}
+
+.log-details {
+    font-size: 0.9rem;
+    color: #475569;
+}
+
+/* Chart Container */
+#historyChart {
+    max-height: 400px;
+}
+
+/* Status Warning */
+.status-warning {
+    background-color: rgba(239, 68, 68, 0.15);
+    color: #dc2626;
+}
+
